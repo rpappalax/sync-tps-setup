@@ -26,7 +26,7 @@ docker build -t firefoxtesteng/sync-tps-setup .
 
 ```sh
 TEST_CONFIG=`cat stage-config.json` 
-docker run -e "TEST_CONFIG=${TEST_CONFIG}" firefoxtesteng/sync-tps-setup
+docker run -e "TEST_ENV=stage" -e "TEST_CONFIG=${TEST_CONFIG}" firefoxtesteng/sync-tps-setup
 ```
 
 or
@@ -35,5 +35,5 @@ or
 
 ```sh
 TEST_CONFIG=`cat prod-config.json`
-docker run -e "TEST_CONFIG=${TEST_CONFIG}" firefoxtesteng/sync-tps-setup
+docker run -e "TEST_ENV=prod" -e "TEST_CONFIG=${TEST_CONFIG}" firefoxtesteng/sync-tps-setup
 ```

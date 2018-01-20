@@ -18,7 +18,8 @@ pipeline {
     }
     stage('Test') {
       steps {
-        //sh "pytest --env=${env.TEST_ENV} config-test/"
+        sh "echo ${env.SYNC_TPS_CONFIG_STAGE}"
+        sh "/tests/venv/bin/activate"
         sh "/tests/run ${env.TEST_ENV} ${env.SYNC_TPS_CONFIG_STAGE}"
       }
     }

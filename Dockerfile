@@ -3,7 +3,7 @@ USER root
 
 WORKDIR /tests
 
-COPY run.sh .
+COPY run .
 
 ARG TEST_CONFIG="{'error':'missing_config'}"
 ARG TEST_ENV="{'error': 'missing_test_env'}"
@@ -43,4 +43,4 @@ RUN cd /mnt/extra/mozilla-central/testing/tps && \
     ./create_venv.py /tests/venv
 
 CMD . /tests/venv/bin/activate && \
-    /tests/run.sh $TEST_CONFIG
+    /tests/run $TEST_ENV $TEST_CONFIG 

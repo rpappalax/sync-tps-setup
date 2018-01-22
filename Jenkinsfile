@@ -13,9 +13,9 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'echo ${env.SYNC_TPS_CONFIG_STAGE}'
-        sh '/tests/venv/bin/activate'
-        sh '/tests/run ${env.TEST_ENV} ${env.SYNC_TPS_CONFIG_STAGE}'
+        sh "echo ${env.SYNC_TPS_CONFIG_STAGE}"
+        sh "/tests/venv/bin/activate"
+        sh "/tests/run ${env.TEST_ENV} ${env.SYNC_TPS_CONFIG_STAGE}"
       }
     }
   }

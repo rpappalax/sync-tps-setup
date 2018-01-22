@@ -10,7 +10,7 @@ ARG TEST_ENV="{'error': 'missing_test_env'}"
 
 RUN apt-get -y update && \
     apt-get install -qq -y software-properties-common && \
-    apt-get install -qq -y wget unzip xvfb \ 
+    apt-get install -qq -y wget unzip \ 
                        libreadline-gplv2-dev libncursesw5-dev \
                        libssl-dev libsqlite3-dev tk-dev libgdbm-dev \
                        libc6-dev libbz2-dev libgtk-3-0 libdbus-glib-1-2 \
@@ -43,4 +43,4 @@ RUN cd /mnt/extra/mozilla-central/testing/tps && \
     ./create_venv.py /tests/venv
 
 CMD . /tests/venv/bin/activate && \
-    /tests/run $TEST_ENV $TEST_CONFIG 
+    /tests/run "$TEST_ENV" "$TEST_CONFIG" 

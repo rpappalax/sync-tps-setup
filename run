@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-TEST_ENV=$1
-TEST_CONFIG=$2
+TEST_ENV="$1"
+TEST_CONFIG="$2"
 BINARY=/tests/firefox-nightly/firefox
 CONFIG_FILE=/tests/venv/config.json
 
@@ -16,11 +16,9 @@ if [ ! -z "$TESTFILE" ]; then
   TESTFILE_ARGS="--testfile='$TESTFILE'"
 fi
 
-if [ "$TEST_ENV" == "prod" ]; then
-  xvfb-run /tests/venv/bin/runtps --debug --binary="$BINARY" --configfile="$CONFIG_FILE" $TESTFILE_ARGS
-elif [ "$TEST_ENV" == "stage" ]; then
+if [ "$TEST_ENV" == "prod" ] || [ "$TEST_ENV" == "stage" ]; then
   MOZ_HEADLESS=1 /tests/venv/bin/runtps --debug --binary="$BINARY" --configfile="$CONFIG_FILE" $TESTFILE_ARGS
 else
-  echo "Unknown environment: $TEST_ENV"
+  echo "Unknown environment: $TEST_ENV --> ABORTING!"
   exit 127
 fi

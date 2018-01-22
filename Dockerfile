@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 WORKDIR /tests
 
-COPY run .
+ADD run .
 
 ARG TEST_CONFIG="{'error':'missing_config'}"
 ARG TEST_ENV="{'error': 'missing_test_env'}"
@@ -17,7 +17,7 @@ RUN apt-get -y update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-RUN chmod +x run && \
+RUN chmod -R 755 /tests && \
     mkdir -p /mnt/extra/mozilla-central/services && \
     mkdir -p /mnt/extra/mozilla-central/testing/tps && \
     wget -q https://github.com/mozilla/gecko-dev/archive/master.zip 

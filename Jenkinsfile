@@ -22,7 +22,7 @@ pipeline {
   post {
     success {
       emailext(
-        body: 'TPS $TEST_ENV success!\n\n$BUILD_URL',
+        body: 'TPS "$TEST_ENV" success!\n\n"$BUILD_URL"',
         replyTo: '$DEFAULT_REPLYTO',
         subject: 'TPS $TEST_ENV Success',
         to: '$DEFAULT_RECIPIENTS')
@@ -30,7 +30,7 @@ pipeline {
     failure {
       emailext(
         attachLog: true,
-        body: 'TPS ${env.TEST_ENV} failure\n\n${env.BUILD_URL}',
+        body: 'TPS "$TEST_ENV" failure\n\n"$BUILD_URL"',
         replyTo: '$DEFAULT_REPLYTO',
         subject: 'TPS $TEST_ENV Failure',
         to: '$DEFAULT_RECIPIENTS')

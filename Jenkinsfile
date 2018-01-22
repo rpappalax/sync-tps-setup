@@ -15,24 +15,17 @@ pipeline {
       steps {
         sh "echo ${env.SYNC_TPS_CONFIG_STAGE}"
         sh "/tests/venv/bin/activate"
-        sh "/tests/run ${env.TEST_ENV} ${env.SYNC_TPS_CONFIG_STAGE}"
+        sh '/tests/run "${env.TEST_ENV}" "${env.SYNC_TPS_CONFIG_STAGE}"'
       }
     }
   }
   post {
-    success {
-      emailext(
-        body: 'TPS TEST_ENV success!\n\n$BUILD_URL',
-        replyTo: '$DEFAULT_REPLYTO',
-        subject: 'TPS TEST_ENV Success',
-        to: '$DEFAULT_RECIPIENTS')
-    }
     failure {
       emailext(
         attachLog: true,
-        body: 'TPS TEST_ENV failure\n\n$BUILD_URL',
+        body: '$BUILD_URL\n\n$FAILED_TESTS',
         replyTo: '$DEFAULT_REPLYTO',
-        subject: 'TPS TEST_ENV Failure',
+        subject: '$DEFAULT_SUBJECT',
         to: '$DEFAULT_RECIPIENTS')
     }
     changed {

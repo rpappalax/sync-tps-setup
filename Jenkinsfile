@@ -11,11 +11,11 @@ pipeline {
     timeout(time: 1, unit: 'HOURS')
   }
   stages {
-    stage('Lint') {
-      steps {
-        sh "flake8"
-      }
-    }
+    //stage('Lint') {
+    //  steps {
+    //    sh "flake8"
+    //  }
+    //}
     stage('Test') {
       steps {
         sh "echo ${env.SYNC_TPS_CONFIG_STAGE}"

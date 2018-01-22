@@ -1,5 +1,5 @@
 FROM ubuntu:16.04 
-USER root
+#USER root
 
 WORKDIR /tests
 

@@ -17,7 +17,7 @@ RUN apt-get -y update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-RUN chmod -R 755 /tests && \
+RUN chmod -R 777 /tests && \
     mkdir -p /mnt/extra/mozilla-central/services && \
     mkdir -p /mnt/extra/mozilla-central/testing/tps && \
     wget -q https://github.com/mozilla/gecko-dev/archive/master.zip 

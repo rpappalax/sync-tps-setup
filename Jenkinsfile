@@ -11,26 +11,28 @@ pipeline {
     timeout(time: 1, unit: 'HOURS')
   }
   stages {
-    //stage('Lint') {
-    //  steps {
-    //    sh "flake8"
-    //  }
-    //}
     stage('Test') {
       steps {
-        sh "echo ${env.SYNC_TPS_CONFIG_STAGE}"
-        sh "/tests/venv/bin/activate"
+        sh 'echo ${env.SYNC_TPS_CONFIG_STAGE}'
+        sh '/tests/venv/bin/activate'
         sh '/tests/run "${env.TEST_ENV}" "${env.SYNC_TPS_CONFIG_STAGE}"'
       }
     }
   }
   post {
+    success {
+      emailext(
+        body: 'TPS $TEST_ENV success!\n\n$BUILD_URL',
+        replyTo: '$DEFAULT_REPLYTO',
+        subject: 'TPS $TEST_ENV Success',
+        to: '$DEFAULT_RECIPIENTS')
+    }
     failure {
       emailext(
         attachLog: true,
-        body: '$BUILD_URL\n\n$FAILED_TESTS',
+        body: 'TPS $TEST_ENV failure\n\n$BUILD_URL',
         replyTo: '$DEFAULT_REPLYTO',
-        subject: '$DEFAULT_SUBJECT',
+        subject: 'TPS $TEST_ENV Failure',
         to: '$DEFAULT_RECIPIENTS')
     }
     changed {

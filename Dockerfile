@@ -1,5 +1,5 @@
 FROM ubuntu:16.04 
-#USER root
+USER root
 
 WORKDIR /tests
 
@@ -18,7 +18,8 @@ RUN apt-get -y update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-RUN mkdir -p /mnt/extra/mozilla-central/services && \
+RUN chmod +x run && \
+    mkdir -p /mnt/extra/mozilla-central/services && \
     mkdir -p /mnt/extra/mozilla-central/testing/tps && \
     wget -q https://github.com/mozilla/gecko-dev/archive/master.zip 
 

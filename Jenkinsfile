@@ -12,6 +12,12 @@ pipeline {
   }
   stages {
     stage('Test') {
+      environment {
+        TEST_ENV = "${TEST_ENV}"
+        //RECIPIENT = "${RECIPIENT}"
+	SYNC_TPS_CONFIG_STAGE = credentials('SYNC_TPS_CONFIG_STAGE')
+	SYNC_TPS_CONFIG_PROD = credentials('SYNC_TPS_CONFIG_PROD')
+      }
       steps {
         sh "echo ${env.SYNC_TPS_CONFIG_STAGE}"
         sh ". /tests/venv/bin/activate"

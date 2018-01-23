@@ -6,6 +6,7 @@ TEST_CONFIG="$2"
 BINARY=/tests/firefox-nightly/firefox
 CONFIG_FILE=/tests/venv/config.json
 
+chmod 777 $CONFIG_FILE
 echo $TEST_CONFIG > $CONFIG_FILE
 
 if [ "$TEST_ENV" == "prod" ] && [ -z "$TESTFILE" ]; then

@@ -20,9 +20,6 @@ pipeline {
       }
       steps {
         sh ". /tests/venv/bin/activate"
-        //sh "echo ${env.SYNC_TPS_CONFIG_STAGE}"
-        //sh "echo ${env.SYNC_TPS_CONFIG_STAGE} > /tests/config.json"
-        //sh "cat /tests/config.json" 
         sh "/tests/run ${env.TEST_ENV} ${env.SYNC_TPS_CONFIG_STAGE}"
       }
     }

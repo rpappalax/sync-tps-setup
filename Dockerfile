@@ -4,8 +4,8 @@ WORKDIR /tests
 
 ADD run .
 
-ARG TEST_CONFIG="{'error':'missing_config'}"
-ARG TEST_ENV="{'error': 'missing_test_env'}"
+ARG TEST_CONFIG="{'missing':'config'}"
+ARG TEST_ENV="{'missing': 'test_env'}"
 
 RUN apt-get -y update && \
     apt-get install -qq -y software-properties-common && \

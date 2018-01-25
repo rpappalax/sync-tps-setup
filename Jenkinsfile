@@ -14,12 +14,15 @@ pipeline {
     stage('Test') {
       environment {
         TEST_ENV = "${TEST_ENV ?: JOB_NAME.split('\\.')[1]}"
-        //RECIPIENT = "${RECIPIENT}"
+        SYNC_TPS_EMAIL_RECIPIENT = "${SYNC_TPS_EMAIL_RECIPIENT}"
 	SYNC_TPS_CONFIG_STAGE = credentials('SYNC_TPS_CONFIG_STAGE')
 	SYNC_TPS_CONFIG_PROD = credentials('SYNC_TPS_CONFIG_PROD')
       }
       steps {
         sh ". /tests/venv/bin/activate"
+        sh "echo ${env.SYNC_TPS_CONFIG_STAGE}"
+        sh "echo ${env.SYNC_TPS_CONFIG_STAGE} > config.json"
+        sh "cat /tests/config.json" 
         sh "/tests/run ${env.TEST_ENV} ${env.SYNC_TPS_CONFIG_STAGE}"
       }
     }

@@ -45,4 +45,4 @@ RUN cd /mnt/extra/mozilla-central/testing/tps && \
 RUN echo '$TEST_CONFIG' > /tests/config.json
 
 CMD . /tests/venv/bin/activate && \
-    /tests/run "$TEST_ENV" "$TEST_CONFIG" 
+    /tests/run '$TEST_ENV' '$TEST_CONFIG' 

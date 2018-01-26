@@ -42,7 +42,6 @@ RUN wget -q -O firefox-nightly.tar.bz2 'https://download.mozilla.org/?product=fi
 RUN cd /mnt/extra/mozilla-central/testing/tps && \
     ./create_venv.py /tests/venv
 
-RUN echo '$TEST_CONFIG' > /tests/config.json
-
-CMD . /tests/venv/bin/activate && \
-    /tests/run '$TEST_ENV' '$TEST_CONFIG' 
+CMD echo '$TEST_CONFIG' > /tests/config.json; && \
+    . /tests/venv/bin/activate && \
+    /tests/run '$TEST_ENV' 

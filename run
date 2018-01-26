@@ -7,6 +7,17 @@ BINARY=/tests/firefox-nightly/firefox
 #CONFIG_FILE=/tests/venv/config.json
 CONFIG_FILE=/tests/config.json
 
+echo "===============================\n"
+echo "from run file....\n"
+echo "===============================\n"
+echo "contents of $CONFIG_FILE.....\n"
+echo
+cat $CONFIG_FILE 
+echo
+echo "===============================\n"
+echo "DONE!"
+echo "===============================\n"
+
 #echo $TEST_CONFIG > $CONFIG_FILE
 
 if [ "$TEST_ENV" == "prod" ] && [ -z "$TESTFILE" ]; then

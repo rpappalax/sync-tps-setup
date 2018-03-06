@@ -14,7 +14,7 @@ echo "contents of $CONFIG_FILE.....\n"
 echo
 ls -la /tests
 ls -la /tests/venv
-cat /tests/venv/config.json
+chmod 755 /tests/venv/config.json
 mv /tests/venv/config.json /tests
 
 echo

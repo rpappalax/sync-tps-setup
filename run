@@ -13,6 +13,7 @@ echo "===============================\n"
 echo "contents of $CONFIG_FILE.....\n"
 echo
 ls -la /tests
+ls -la /tests/venv
 cat $CONFIG_FILE 
 echo
 echo "===============================\n"

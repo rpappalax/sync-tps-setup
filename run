@@ -12,6 +12,7 @@ echo "from run file....\n"
 echo "===============================\n"
 echo "contents of $CONFIG_FILE.....\n"
 echo
+ls -la /tests
 cat $CONFIG_FILE 
 echo
 echo "===============================\n"

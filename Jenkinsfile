@@ -31,7 +31,7 @@ pipeline {
         body: '$BUILD_URL\n\n$FAILED_TESTS',
         replyTo: '$DEFAULT_REPLYTO',
         subject: '$DEFAULT_SUBJECT',
-        to: '$DEFAULT_RECIPIENTS')
+        to: 'stephen.donner@gmail.com, sdonner@mozilla.com')
     }
     changed {
       ircNotification()
